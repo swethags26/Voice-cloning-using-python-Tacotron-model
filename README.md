@@ -1,22 +1,40 @@
-The audio files in this folder are provided for toolbox testing and
-benchmarking purposes. These are the same reference utterances
-used by the SV2TTS authors to generate the audio samples located at:
-https://google.github.io/tacotron/publications/speaker_adaptation/index.html
+# Text-to-Speech (TTS) using Tacotron
 
-The `p240_00000.mp3` and `p260_00000.mp3` files are compressed
-versions of audios from the VCTK corpus available at:
-https://datashare.is.ed.ac.uk/handle/10283/3443
-VCTK.txt contains the copyright notices and licensing information.
+This project implements a Text-to-Speech (TTS) system based on the Tacotron model. The Tacotron model is a sequence-to-sequence architecture that can generate mel-spectrograms from input text, which can then be converted into high-quality speech using a vocoder like WaveRNN. The project includes data preprocessing, model definition, training, and evaluation tools.
 
-The `1320_00000.mp3`, `3575_00000.mp3`, `6829_00000.mp3`
-and `8230_00000.mp3` files are compressed versions of audios
-from the LibriSpeech dataset available at: https://openslr.org/12
-For these files, the following notice applies:
-```
-LibriSpeech (c) 2014 by Vassil Panayotov
+## Prerequisites
 
-LibriSpeech ASR corpus is licensed under a
-Creative Commons Attribution 4.0 International License.
+- Python 3.x
+- PyTorch
+- librosa
+- soundfile
+- lws
 
-See <http://creativecommons.org/licenses/by/4.0/>.
-```
+You can install the required dependencies using the following command:
+
+## Project Structure
+
+- `synthesizer/`: Contains the Tacotron model definition and training code.
+- `vocoder/`: Contains the WaveRNN vocoder code (not included in this README).
+- `datasets/`: Put your training dataset in this directory.
+- `metadata.csv`: The metadata file containing the information about the training data.
+- `tacotron_hparams.py`: Configuration file for model hyperparameters.
+- `train_tacotron.py`: The main script for training the Tacotron model.
+- `synthesize.py`: Use this script to synthesize speech from trained Tacotron model.
+- `eval_tacotron.py`: Evaluate the Tacotron model performance.
+
+## Usage
+
+1. Prepare your training dataset and place it in the `datasets/` directory. Create a `metadata.csv` file containing relevant information about the training data.
+2. Set the desired hyperparameters in `tacotron_hparams.py`.
+3. Train the Tacotron model using `train_tacotron.py`.
+4. Optionally, evaluate the model using `eval_tacotron.py`.
+5. Synthesize speech from trained model using `synthesize.py`.
+
+## Acknowledgments
+
+This project is based on the Tacotron model implementation by Keith Ito (https://github.com/keithito/tacotron).
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
